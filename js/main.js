@@ -1,5 +1,5 @@
 /* =================================================================
-   DENTALDOCTORS MAIN.JS - VANILLA JAVASCRIPT ARCHITECTURE
+   CLÍNICA NUBE MAIN.JS - DEMOSTRACIÓN
    ================================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* 4. VALIDACIÓN DE FORMULARIO & WHATSAPP REDIRECT */
+  /* 4. VALIDACIÓN DEL FORMULARIO DE DEMOSTRACIÓN */
   const appointmentForm = document.getElementById('appointmentForm');
   const successMessage = document.getElementById('formSuccessMessage');
   const appointmentDate = document.getElementById('fecha');
@@ -194,27 +194,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!appointmentForm.reportValidity()) return;
 
-      const nombre = document.getElementById('nombre').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const correo = document.getElementById('correo').value.trim();
-      const servicio = document.getElementById('servicio').value;
-      const fecha = document.getElementById('fecha').value;
-      const hora = document.getElementById('hora').value;
-      const comentarios = document.getElementById('comentarios').value.trim();
-
       if (successMessage) {
         successMessage.style.display = 'block';
         appointmentForm.style.opacity = '0.5';
         appointmentForm.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
       }
-
-      // Construir mensaje de WhatsApp formateado
-      const whatsappNumber = '524771563251';
-      const text = `Hola *DentalDoctors*, deseo solicitar una cita de valoración.\n\n*Paciente:* ${nombre}\n*Teléfono:* ${telefono}\n*Correo electrónico:* ${correo || 'No proporcionado'}\n*Servicio:* ${servicio}\n*Fecha Preferida:* ${fecha}\n*Horario:* ${hora}\n*Motivo general:* ${comentarios || 'No especificado'}`;
-
-      setTimeout(() => {
-        window.location.assign(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`);
-      }, 1500);
     });
   }
 
