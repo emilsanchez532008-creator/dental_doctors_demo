@@ -1,354 +1,237 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clínica Nube | Sitio de demostración dental</title>
-  <meta name="description" content="Sitio demostrativo de una clínica dental ficticia. Contenido, identidad e ilustraciones originales creados para este ejemplo.">
-  <link rel="icon" type="image/svg+xml" href="img/logo-nube.svg">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="es_MX">
-  <meta property="og:site_name" content="Clínica Nube">
-  <meta property="og:title" content="Clínica Nube | Sitio de demostración dental">
-  <meta property="og:description" content="Ejemplo ficticio de un sitio para una clínica dental, con ilustraciones y textos originales.">
-  <meta property="og:image" content="img/clinica-nube.svg">
-  <meta property="og:image:alt" content="Ilustración original de una clínica dental ficticia">
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080d1b">
+    <title>MATRIX CIPHER LAB</title>
+    <meta name="description" content="Explora el cifrado matricial: transforma mensajes con álgebra lineal, matrices y una clave invertible.">
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="MATRIX CIPHER LAB · El mensaje es la matriz">
+    <meta property="og:description" content="Un laboratorio interactivo para explorar mensajes, matrices y álgebra lineal.">
+    <meta property="og:image" content="./og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="MATRIX CIPHER LAB: B = A × X, con una matriz sobre fondo azul oscuro.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MATRIX CIPHER LAB · El mensaje es la matriz">
+    <meta name="twitter:description" content="Explora el cifrado matricial en un laboratorio interactivo de álgebra lineal.">
+    <meta name="twitter:image" content="./og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js"></script>
+    <script defer src="app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
-
-  <!-- Header & Nav -->
-  <header class="header">
-    <div class="top-bar">
-      <span><i class="fa-solid fa-location-dot"></i> Distrito Nube · Ciudad Prisma (ubicación ficticia)</span>
-      <span>Ejemplo de sitio · datos ficticios</span>
-    </div>
-    <div class="nav-container">
-      <a href="#inicio" class="logo">
-        <img src="img/logo-nube.svg" alt="" class="logo-image">
-        <span class="logo-name">Clínica Nube<small>SONRISAS PARA DÍAS LUMINOSOS</small></span>
-      </a>
-      <nav class="nav-menu" id="navMenu">
-        <a href="#inicio" class="nav-link active">Inicio</a>
-        <a href="#compromisos" class="nav-link">Compromisos</a>
-        <a href="#tratamientos" class="nav-link">Tratamientos</a>
-        <a href="#opiniones" class="nav-link">Consejos</a>
-        <a href="#ubicacion" class="nav-link">Ubicación y Contacto</a>
-      </nav>
-      <div class="nav-actions">
-        <div class="phone-indicator d-none-mobile">
-          <span><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Atención de muestra</span>
-        </div>
-        <a href="#formulario-cita" class="btn btn-primary">Agendar cita</a>
-        <button class="hamburger" id="hamburgerBtn" aria-label="Menú">
-          <i class="fa-solid fa-bars"></i>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <main>
-  <!-- Hero Section -->
-  <section class="hero" id="inicio">
-    <div class="hero-content">
-      <span class="eyebrow">CLÍNICA DENTAL FICTICIA · CIUDAD PRISMA</span>
-      <h1>Una sonrisa luminosa empieza con atención cercana.</h1>
-      <p>Conoce este ejemplo de clínica dental: cuidado preventivo, orientación sencilla y una experiencia pensada para toda la familia.</p>
-      <div class="badges">
-        <div class="badge"><i class="fa-solid fa-wand-magic-sparkles" style="color: #F59E0B;"></i> Identidad y contenido de demostración</div>
-        <div class="badge"><i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Distrito Nube, lugar imaginario</div>
-      </div>
-      <div class="hero-buttons">
-        <a href="#formulario-cita" class="btn btn-accent">
-          <i class="fa-solid fa-calendar-check"></i> Probar formulario
+    <div class="ambient-layer" aria-hidden="true"></div>
+    <header class="shell topbar">
+        <a class="brand" href="#" id="brand-home" aria-label="Volver al inicio">
+            <span class="brand-mark">M×</span>
+            <span class="brand-name">MATRIX CIPHER LAB</span>
         </a>
-        <a href="#tratamientos" class="btn btn-primary">Ver tratamientos</a>
-      </div>
-    </div>
-    <div class="hero-image">
-      <img src="img/clinica-nube.svg" alt="Ilustración original de un consultorio dental ficticio">
-    </div>
-  </section>
-
-  <!-- Barra de Garantías -->
-  <section class="guarantees-section" id="compromisos">
-    <div class="guarantees-grid">
-      <div class="guarantee-card">
-        <i class="fa-solid fa-cube"></i>
-        <h3>Atención amable</h3>
-        <p>Un ambiente tranquilo y acogedor para que cada visita se sienta más sencilla.</p>
-      </div>
-      <div class="guarantee-card">
-        <i class="fa-solid fa-credit-card"></i>
-        <h3>Diagnóstico claro</h3>
-        <p>Explicaciones claras para conocer hábitos y alternativas de cuidado bucal.</p>
-      </div>
-      <div class="guarantee-card">
-        <i class="fa-solid fa-award"></i>
-        <h3>Odontología integral</h3>
-        <p>Opciones generales de cuidado preventivo, restauración y bienestar dental.</p>
-      </div>
-      <div class="guarantee-card">
-        <i class="fa-solid fa-user-doctor"></i>
-        <h3>Orientación a tu medida</h3>
-        <p>Una guía cercana que toma en cuenta tus dudas y tus objetivos de bienestar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tratamientos -->
-  <section class="section-container" id="tratamientos">
-    <div class="section-header">
-      <h2>Opciones para cuidar tu sonrisa</h2>
-      <p>Conoce algunos servicios de ejemplo. La atención real requiere valoración de profesionales de salud.</p>
-    </div>
-    <div class="treatment-filters" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;">
-      <button class="btn btn-primary filter-btn" data-filter="all" aria-pressed="true">Todos</button>
-      <button class="btn btn-outline filter-btn" data-filter="restauracion" aria-pressed="false">Restauración</button>
-      <button class="btn btn-outline filter-btn" data-filter="ortodoncia" aria-pressed="false">Alineación</button>
-      <button class="btn btn-outline filter-btn" data-filter="prevencion" aria-pressed="false">Prevención y estética</button>
-    </div>
-    <div class="services-grid" id="servicesGrid">
-      <div class="service-card" data-category="restauracion">
-        <img src="img/restauracion-nube.svg" alt="Ilustración original sobre restauración dental" class="service-img">
-        <div class="service-body">
-          <div>
-            <h3>01 / RESTAURACIÓN — Cuidado restaurativo</h3>
-            <p>Alternativas de cuidado para ayudar a proteger la estructura dental, siempre con orientación profesional.</p>
-            <div class="service-price">Contenido informativo</div>
-          </div>
-          <a href="#formulario-cita" class="btn btn-accent" style="width: 100%;">
-            <i class="fa-solid fa-circle-info"></i> Ver demostración
-          </a>
+        <div class="header-actions">
+            <button class="quiet-button" id="home-button" type="button">⌂ Inicio</button>
+            <button class="quiet-button" id="switch-button" type="button" hidden>↔ Cambiar modo</button>
         </div>
-      </div>
-      <div class="service-card" data-category="ortodoncia">
-        <img src="img/alineacion-nube.svg" alt="Ilustración original sobre alineación dental" class="service-img">
-        <div class="service-body">
-          <div>
-            <h3>02 / ALINEACIÓN — Guía de ortodoncia</h3>
-            <p>Información general sobre opciones de alineación y la importancia del seguimiento profesional.</p>
-            <div class="service-price">Contenido informativo</div>
-          </div>
-          <a href="#formulario-cita" class="btn btn-accent" style="width: 100%;">
-            <i class="fa-solid fa-circle-info"></i> Ver demostración
-          </a>
-        </div>
-      </div>
-      <div class="service-card" data-category="prevencion">
-        <img src="img/prevencion-nube.svg" alt="Ilustración original sobre prevención y cuidado dental" class="service-img">
-        <div class="service-body">
-          <div>
-            <h3>03 / PREVENCIÓN — Hábitos y limpieza</h3>
-            <p>Hábitos de higiene y cuidados preventivos para acompañar una sonrisa saludable día a día.</p>
-            <div class="service-price">Contenido informativo</div>
-          </div>
-          <a href="#formulario-cita" class="btn btn-accent" style="width: 100%;">
-            <i class="fa-solid fa-circle-info"></i> Ver demostración
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Inspiración y cuidado -->
-  <section class="section-container" id="opiniones" style="background: #F1F5F9; border-radius: 24px; margin-bottom: 4rem;">
-    <div class="feature-split-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
-      <div>
-        <div class="badge"><i class="fa-solid fa-lightbulb" style="color: #F59E0B;"></i> Un espacio creado para este ejemplo</div>
-        <h2 style="margin: 1rem 0;">Pequeños hábitos diarios hacen brillar tu sonrisa.</h2>
-        <p style="color: var(--text-muted); margin-bottom: 2rem;">Cepillado cuidadoso, limpieza entre dientes y consultas preventivas son parte de una rutina de bienestar bucal. Este contenido es informativo y no sustituye una valoración profesional.</p>
-        <a href="#formulario-cita" class="btn btn-primary">Explorar el formulario</a>
-      </div>
-      <div>
-        <img src="img/sonrisa-nube.svg" alt="Ilustración original de una sonrisa y una planta" style="width: 100%; border-radius: var(--radius); box-shadow: var(--shadow-md);">
-      </div>
-    </div>
-  </section>
-
-  <!-- Ubicación y contacto -->
-  <section class="section-container" id="ubicacion">
-    <div class="section-header">
-      <h2>Contacto de demostración</h2>
-      <p>Los datos de esta página son inventados. El formulario es una demostración local y no envía información a ninguna clínica.</p>
-    </div>
-    <div class="contact-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: flex-start;">
-      <div id="formulario-cita" style="background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow-md);">
-        <h3 style="margin-bottom: 1.5rem;">Prueba el formulario</h3>
-        <form id="appointmentForm">
-          <div style="margin-bottom: 1.25rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="nombre">Nombre Completo *</label>
-            <input type="text" id="nombre" required style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem;" placeholder="Escribe un nombre de ejemplo">
-          </div>
-          <div style="margin-bottom: 1.25rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="telefono">Teléfono / WhatsApp *</label>
-            <input type="tel" id="telefono" required style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem;" placeholder="000 000 0000 (dato de ejemplo)">
-          </div>
-          <div style="margin-bottom: 1.25rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="correo">Correo electrónico (opcional)</label>
-            <input type="email" id="correo" autocomplete="email" style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem;" placeholder="ejemplo@dominio.invalid">
-          </div>
-          <div style="margin-bottom: 1.25rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="servicio">Servicio de Interés *</label>
-            <select id="servicio" required style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem; background: #fff;">
-              <option value="">Selecciona un tratamiento...</option>
-              <option value="Resinas Estéticas">Resinas Estéticas</option>
-              <option value="Ortodoncia">Ortodoncia</option>
-              <option value="Limpieza y Rehabilitación">Limpieza y Rehabilitación</option>
-              <option value="Consulta de Valoración">Consulta de Valoración</option>
-            </select>
-          </div>
-          <div class="appointment-time-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
-            <div>
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="fecha">Día Preferido *</label>
-              <input type="date" id="fecha" required style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem;">
+    <main class="shell">
+        <section id="landing" class="landing">
+            <div class="landing-hero">
+                <div class="hero-copy">
+                    <div class="eyebrow"><span class="signal-dot" aria-hidden="true"></span> Laboratorio interactivo · Álgebra lineal</div>
+                    <h1 class="gradient-text">El mensaje<br>es la <em>matriz.</em></h1>
+                    <p class="lead">Una clave. Una transformación. Cada carácter encuentra su lugar en el sistema.</p>
+                    <p class="notice"><strong>Nota de laboratorio</strong><span>Modelo didáctico de álgebra lineal; no protege información sensible.</span></p>
+                </div>
+                <div class="hero-specimen" aria-hidden="true">
+                    <div class="specimen-header"><span>FIG. 01 / SISTEMA LINEAL</span><span class="specimen-live">ACTIVO</span></div>
+                    <div class="specimen-equation"><span>B</span><i>=</i><span>A</span><i>·</i><span>X</span></div>
+                    <div class="specimen-matrix">
+                        <span>01</span><span>00</span><span>15</span>
+                        <span>03</span><span>21</span><span>00</span>
+                        <span>24</span><span>08</span><span>02</span>
+                    </div>
+                    <div class="specimen-footer"><span>n × n</span><span>det(A) ≠ 0</span><span>Ñ = 15</span></div>
+                    <span class="specimen-cross cross-one"></span>
+                    <span class="specimen-cross cross-two"></span>
+                </div>
             </div>
-            <div>
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="hora">Horario *</label>
-              <select id="hora" required disabled style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem; background: #fff;">
-                <option value="">Selecciona primero un día...</option>
-              </select>
+
+            <section class="flow-card" aria-labelledby="flow-title">
+                <div class="flow-heading">
+                    <div><div class="flow-kicker">EL RECORRIDO</div><h2 id="flow-title">Del texto a la transformación</h2></div>
+                    <span class="flow-equation">A · X <span>→</span> B</span>
+                </div>
+                <div class="flow" role="list" aria-label="Etapas del cifrado matricial">
+                    <div class="flow-stage" role="listitem">
+                        <span class="flow-number">01</span>
+                        <span class="flow-symbol">T<span>XT</span></span>
+                        <b>Texto</b>
+                        <small>mensaje original</small>
+                    </div>
+                    <div class="flow-stage" role="listitem">
+                        <span class="flow-number">02</span>
+                        <span class="flow-symbol">A<span>→1</span></span>
+                        <b>Mapeo</b>
+                        <small>A=1…Z=27 · Esp=0</small>
+                    </div>
+                    <div class="flow-stage" role="listitem">
+                        <span class="flow-number">03</span>
+                        <span class="flow-symbol">X<span>n²</span></span>
+                        <b>Matriz X</b>
+                        <small>ordenada por filas</small>
+                    </div>
+                    <div class="flow-stage" role="listitem">
+                        <span class="flow-number">04</span>
+                        <span class="flow-symbol">A<span>·X</span></span>
+                        <b>Álgebra</b>
+                        <small>A·X / A⁻¹·B</small>
+                    </div>
+                </div>
+            </section>
+
+            <div class="mode-grid" aria-label="Elige un modo de trabajo">
+                <button class="mode-card" type="button" data-screen="encrypt">
+                    <span class="card-kicker">MODO DIRECTO <span>01 / 03</span></span>
+                    <span class="mode-icon" aria-hidden="true">↗</span>
+                    <strong>Encriptar</strong>
+                    <small>Elige una clave y transforma el mensaje en una matriz.</small>
+                    <span class="card-action" aria-hidden="true">Abrir laboratorio <b>↗</b></span>
+                </button>
+                <button class="mode-card decode" type="button" data-screen="decrypt">
+                    <span class="card-kicker">INVERSA MATRICIAL <span>02 / 03</span></span>
+                    <span class="mode-icon" aria-hidden="true">↙</span>
+                    <strong>Descifrar</strong>
+                    <small>Recupera el texto desde un JSON o una matriz B.</small>
+                    <span class="card-action" aria-hidden="true">Abrir laboratorio <b>↙</b></span>
+                </button>
+                <button class="mode-card guide-card" type="button" data-screen="guide">
+                    <span class="card-kicker">REFERENCIA <span>03 / 03</span></span>
+                    <span class="mode-icon" aria-hidden="true">⌘</span>
+                    <strong>Guía / Alfabeto</strong>
+                    <small>Consulta la tabla y los pasos de la transformación.</small>
+                    <span class="card-action" aria-hidden="true">Ver tabla <b>↗</b></span>
+                </button>
             </div>
-          </div>
-          <div style="margin-bottom: 1.5rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; font-size: 0.9rem;" for="comentarios">Motivo general de la solicitud</label>
-            <textarea id="comentarios" rows="3" style="width: 100%; padding: 0.75rem; border-radius: var(--radius); border: 1px solid var(--border-color); font-family: inherit; font-size: 1rem;" placeholder="Describe brevemente el motivo. Evita incluir información clínica sensible."></textarea>
-          </div>
-          <div class="form-consent">
-            <input type="checkbox" id="privacyConsent" required aria-labelledby="consentLabel privacyLink termsLink">
-            <div class="consent-copy">
-              <label id="consentLabel" for="privacyConsent">Entiendo que este formulario es solo una demostración y no enviaré datos personales. </label>
-              <button type="button" class="inline-legal-link" id="privacyLink" data-dialog-open="privacyDialog">Aviso de Privacidad</button>
-              <span> y los </span>
-              <button type="button" class="inline-legal-link" id="termsLink" data-dialog-open="termsDialog">Términos y Condiciones</button>.
+        </section>
+
+        <section id="encrypt-screen" hidden>
+            <div class="workspace-heading">
+                <div><div class="eyebrow">Modo de trabajo · 01</div><h2>Encriptar mensaje</h2><p>Tu mensaje se convierte en una matriz cuadrada y se transforma con la clave.</p></div>
             </div>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            <i class="fa-solid fa-paper-plane"></i> Mostrar demostración
-          </button>
-        </form>
-        <div id="formSuccessMessage" style="display: none; margin-top: 1.5rem; padding: 1rem; background: #E6F4EA; color: #137333; border-radius: var(--radius); font-weight: 600; text-align: center;">
-          Demostración completada. No se envió información.
-        </div>
-      </div>
-      <div>
-        <div style="background: var(--bg-card); padding: 2.5rem; border-radius: var(--radius); border: 1px solid var(--border-color); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
-          <h3 style="margin-bottom: 1.25rem;">Datos ficticios</h3>
-          <ul style="display: flex; flex-direction: column; gap: 1.25rem;">
-            <li style="display: flex; align-items: flex-start; gap: 1rem;">
-              <i class="fa-solid fa-location-dot" style="color: var(--primary); font-size: 1.2rem; margin-top: 0.2rem;"></i>
-              <div><strong>Ubicación:</strong><br>Distrito Nube, Ciudad Prisma. Lugar imaginario, sin dirección real.</div>
-            </li>
-            <li style="display: flex; align-items: center; gap: 1rem;">
-              <i class="fa-solid fa-phone" style="color: var(--primary); font-size: 1.2rem;"></i>
-              <div><strong>Teléfono de muestra:</strong><br>00 0000 0000 (no llamar)</div>
-            </li>
-            <li style="display: flex; align-items: center; gap: 1rem;">
-              <i class="fa-brands fa-whatsapp" style="color: #25D366; font-size: 1.3rem;"></i>
-              <div><strong>Mensajería:</strong><br>No conectada en este ejemplo.</div>
-            </li>
-            <li style="display: flex; align-items: flex-start; gap: 1rem;">
-              <i class="fa-regular fa-clock" style="color: var(--primary); font-size: 1.2rem; margin-top: 0.2rem;"></i>
-              <div><strong>Horario ficticio:</strong><br>Lunes a viernes: 9:00 a.m. – 5:00 p.m.<br>Fin de semana: cerrado</div>
-            </li>
-          </ul>
-        </div>
-        <div class="map-container" style="border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); height: 300px;">
-          <img src="img/mapa-nube.svg" alt="Mapa ilustrativo original de una ubicación imaginaria en Ciudad Prisma" style="width: 100%; height: 100%; object-fit: cover;">
-        </div>
-      </div>
-    </div>
-  </section>
-  </main>
+            <div class="workspace-grid">
+                <section class="panel">
+                    <div class="panel-heading"><span class="step-index">01</span><div><h3>Matriz clave A</h3><p>Debe ser invertible para poder recuperar el mensaje.</p></div></div>
+                    <label class="field-label" for="enc-dim">Dimensión de la clave</label>
+                    <select id="enc-dim" aria-label="Dimensión de la matriz clave para encriptar">
+                        <option value="3">3 × 3</option><option value="4">4 × 4</option><option value="5">5 × 5</option><option value="6">6 × 6</option>
+                    </select>
+                    <div id="enc-matrix-editor" class="matrix-editor" aria-label="Editor de matriz clave A"></div>
+                    <div id="enc-matrix-status" class="matrix-status" role="status" aria-live="polite"></div>
+                    <button class="button ghost full" id="enc-random" type="button">⟳ Generar clave aleatoria invertible</button>
+                </section>
+                <section class="panel">
+                    <div class="panel-heading"><span class="step-index">02</span><div><h3>Mensaje original</h3><p>Se admiten letras españolas y espacios.</p></div></div>
+                    <label class="field-label" for="enc-text">Escribe tu mensaje <small id="enc-limit-label">máximo 9 caracteres</small></label>
+                    <textarea id="enc-text" maxlength="9" placeholder="Ejemplo: HOLA MUNDO" spellcheck="false"></textarea>
+                    <div class="counter">
+                        <span id="enc-input-warning" aria-live="polite"></span>
+                        <span id="enc-counter">0 / 9 caracteres</span>
+                        <div id="enc-character-progress" class="counter-track" role="progressbar" aria-label="Capacidad del mensaje" aria-valuemin="0" aria-valuemax="9" aria-valuenow="0">
+                            <span id="enc-character-progress-fill"></span>
+                        </div>
+                    </div>
+                    <button class="button full" id="encrypt-button" type="button">🔒 Encriptar mensaje</button>
+                </section>
+            </div>
+            <div id="enc-processing" class="processing-status" role="status" aria-live="polite" hidden>
+                <span class="processing-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <div class="processing-copy"><span class="processing-kicker">PROCESANDO · CIFRADO</span><strong id="enc-processing-label"></strong></div>
+                <div class="processing-meter" aria-hidden="true"><span></span></div>
+            </div>
+            <section id="enc-results" class="panel result-panel" hidden aria-live="polite">
+                <div class="result-label">Matriz cifrada B</div>
+                <div id="enc-encoding-readout" class="encoding-readout" aria-live="polite" hidden></div>
+                <div id="enc-final-matrix" class="math-view"></div>
+                <a id="download-json" class="button secondary" href="#" download="mensaje_cifrado.json">↓ Descargar JSON cifrado</a>
+                <button class="button ghost process-toggle" id="enc-process-toggle" type="button" aria-expanded="false">🔍 Mostrar proceso paso a paso</button>
+                <div id="enc-process" class="process-grid" hidden></div>
+            </section>
+        </section>
 
-  <!-- CTA flotante de demostración -->
-  <a href="#formulario-cita" class="appointment-float" aria-label="Ir al formulario para agendar una cita">
-    <i class="fa-solid fa-calendar-check"></i>
-  </a>
+        <section id="decrypt-screen" hidden>
+            <div class="workspace-heading">
+                <div><div class="eyebrow">Modo de trabajo · 02</div><h2>Descifrar mensaje</h2><p>Usa la misma clave invertible que se utilizó al encriptar.</p></div>
+            </div>
+            <div class="workspace-grid">
+                <section class="panel">
+                    <div class="panel-heading"><span class="step-index">01</span><div><h3>Matriz clave A</h3><p>Introduce la clave original usada para cifrar.</p></div></div>
+                    <label class="field-label" for="dec-dim">Dimensión de la clave</label>
+                    <select id="dec-dim" aria-label="Dimensión de la matriz clave para descifrar">
+                        <option value="3">3 × 3</option><option value="4">4 × 4</option><option value="5">5 × 5</option><option value="6">6 × 6</option>
+                    </select>
+                    <div id="dec-matrix-editor" class="matrix-editor" aria-label="Editor de matriz clave A"></div>
+                    <div id="dec-matrix-status" class="matrix-status" role="status" aria-live="polite"></div>
+                    <div class="key-load-control">
+                        <button class="button secondary full" id="use-last-key" type="button" aria-describedby="last-key-help" disabled>
+                            ⚡ Usar última clave de encriptado
+                        </button>
+                        <small id="last-key-help" class="field-help">Se activará después de encriptar un mensaje.</small>
+                    </div>
+                </section>
+                <section class="panel">
+                    <div class="panel-heading"><span class="step-index">02</span><div><h3>Matriz cifrada B</h3><p>Carga el JSON exportado o escribe los valores de B.</p></div></div>
+                    <label class="field-label" for="dec-file">Archivo JSON cifrado</label>
+                    <input class="file-input" id="dec-file" type="file" accept=".json,application/json">
+                    <div id="dec-file-status" class="inline-status" role="status" aria-live="polite"></div>
+                    <div class="divider">o ingresa B manualmente</div>
+                    <div class="field-label">Valores de la matriz B</div>
+                    <div id="dec-cipher-editor" class="cipher-editor" aria-label="Editor de matriz cifrada B"></div>
+                    <div class="button-row"><button class="button full" id="decrypt-button" type="button">🔓 Descifrar mensaje</button></div>
+                </section>
+            </div>
+            <div id="dec-processing" class="processing-status" role="status" aria-live="polite" hidden>
+                <span class="processing-glyph" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <div class="processing-copy"><span class="processing-kicker">PROCESANDO · DESCIFRADO</span><strong id="dec-processing-label"></strong></div>
+                <div class="processing-meter" aria-hidden="true"><span></span></div>
+            </div>
+            <section id="dec-results" class="panel result-panel" hidden aria-live="polite">
+                <div class="result-label">Mensaje recuperado</div>
+                <div id="dec-final-text" class="result-text"></div>
+                <div id="dec-result-note" class="result-subtitle"></div>
+                <div class="button-row">
+                    <button class="button secondary" id="copy-result" type="button">⧉ Copiar resultado</button>
+                    <button class="button ghost process-toggle" id="dec-process-toggle" type="button" aria-expanded="false">🔍 Mostrar proceso paso a paso</button>
+                </div>
+                <div id="dec-copy-status" class="inline-status" role="status" aria-live="polite"></div>
+                <div id="dec-process" class="process-grid" hidden></div>
+            </section>
+        </section>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-col">
-        <h4 class="footer-brand"><img src="img/logo-nube.svg" alt="" class="logo-image"> Clínica Nube</h4>
-        <p style="color: #D1D5DB; font-size: 0.95rem;">Clínica dental de un mundo imaginario.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Enlaces Rápidos</h4>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#compromisos">Compromisos</a></li>
-          <li><a href="#tratamientos">Tratamientos</a></li>
-          <li><a href="#opiniones">Consejos</a></li>
-          <li><a href="#ubicacion">Ubicación y Contacto</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Tratamientos</h4>
-        <ul>
-          <li><a href="#tratamientos">Cuidado restaurativo</a></li>
-          <li><a href="#tratamientos">Alineación</a></li>
-          <li><a href="#tratamientos">Prevención</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Ubicación ilustrativa</h4>
-        <p style="color: #D1D5DB; font-size: 0.95rem; margin-bottom: 0.5rem;">Distrito Nube, Ciudad Prisma. Ubicación completamente ficticia.</p>
-        <p style="color: #D1D5DB; font-size: 0.95rem;">Teléfono: 00 0000 0000 (no llamar)<br>Lun - Vie: 9:00 a.m. - 5:00 p.m.<br>Fin de semana: cerrado</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Sitio de demostración · Marca, datos y contenido ficticios</p>
-      <div class="footer-legal-links">
-        <a href="#privacyDialog" class="footer-legal-link" data-dialog-open="privacyDialog">Aviso de Privacidad</a>
-        <a href="#termsDialog" class="footer-legal-link" data-dialog-open="termsDialog">Términos y Condiciones</a>
-      </div>
-    </div>
-  </footer>
-
-  <dialog class="legal-dialog" id="privacyDialog" aria-labelledby="privacyDialogTitle">
-    <div class="legal-dialog-header">
-      <h2 id="privacyDialogTitle">Aviso de Privacidad Integral</h2>
-      <button type="button" class="dialog-close" data-dialog-close aria-label="Cerrar Aviso de Privacidad">&times;</button>
-    </div>
-    <div class="legal-dialog-body">
-      <p><strong>Aviso de demostración.</strong> Clínica Nube, Ciudad Prisma y todos los datos de este sitio son ficticios. Esta página es una maqueta educativa y no representa a una clínica ni a un responsable real.</p>
-      <h3>Datos personales recabados</h3>
-      <p>El formulario solo demuestra la interacción visual. No ingreses información personal o clínica: al enviarlo, los datos permanecen en esta página y no se transmiten ni guardan.</p>
-      <h3>Finalidades</h3>
-      <p>Este ejemplo no ofrece servicios ni usa datos para contactar a ninguna persona.</p>
-      <h3>Derechos ARCO</h3>
-      <p>No existe un domicilio, teléfono ni entidad responsable reales asociados a esta maqueta.</p>
-      <h3>Transferencias y servicios externos</h3>
-      <p>Las ilustraciones y el mapa de esta página son archivos locales de demostración. El envío del formulario no abre WhatsApp ni comparte información.</p>
-    </div>
-  </dialog>
-
-  <dialog class="legal-dialog" id="termsDialog" aria-labelledby="termsDialogTitle">
-    <div class="legal-dialog-header">
-      <h2 id="termsDialogTitle">Términos y Condiciones de Uso</h2>
-      <button type="button" class="dialog-close" data-dialog-close aria-label="Cerrar Términos y Condiciones">&times;</button>
-    </div>
-    <div class="legal-dialog-body">
-      <h3>Carácter informativo y atención clínica</h3>
-      <p>La información es ficticia, general y solo ilustrativa; no representa servicios disponibles ni sustituye una valoración clínica profesional.</p>
-      <h3>Solicitudes de cita</h3>
-      <p>El formulario es una interacción de muestra: no crea citas, no envía solicitudes y no contacta a una clínica.</p>
-      <h3>Servicios de terceros</h3>
-      <p>La ubicación y el mapa son inventados y no corresponden a un consultorio real.</p>
-      <h3>Propiedad intelectual</h3>
-      <p>El nombre, los textos y las ilustraciones de este ejemplo fueron creados para esta maqueta ficticia; no se usan marcas, pacientes, testimonios ni ubicaciones reales.</p>
-    </div>
-  </dialog>
-
-  <!-- JavaScript -->
-  <script src="js/main.js"></script>
+        <section id="guide-screen" class="guide-content" hidden>
+            <div class="workspace-heading">
+                <div><div class="eyebrow">Referencia</div><h2>Guía rápida</h2><p>El alfabeto español y las ideas detrás de cada operación.</p></div>
+            </div>
+            <section class="panel">
+                <h3>Alfabeto: cada carácter tiene un valor</h3>
+                <p class="guide-paragraph">A cada letra le corresponde un entero del 1 al 27. La Ñ cuenta como una letra y el espacio en blanco vale exactamente 0. Los acentos se normalizan automáticamente.</p>
+                <div id="alphabet-grid" class="alphabet-grid"></div>
+                <h3>Una clave reversible</h3>
+                <p class="guide-paragraph">La matriz cuadrada A debe contener enteros y tener determinante distinto de cero. Así existe su inversa A⁻¹.</p>
+                <h3>Codificación y recuperación</h3>
+                <p class="guide-paragraph">El mensaje ocupa exactamente n² posiciones. Si es más corto, las posiciones restantes se completan con ceros. Se calcula B = A × X y, para recuperar el texto, X = A⁻¹ × B.</p>
+                <p class="notice"><strong>Nota:</strong> es un modelo educativo sin aritmética modular, no un método criptográfico seguro.</p>
+            </section>
+        </section>
+    </main>
+    <footer class="shell footer">MATRIX CIPHER LAB · Aprende álgebra lineal jugando con matrices</footer>
+    <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
 </body>
 </html>
